@@ -8,15 +8,15 @@ module.exports = {
 
                 const webhookChannelID = '801590099099123713';
                 const channel = client.channels.cache.get(webhookChannelID)
-                
+
                 const webhooks = await channel.fetchWebhooks();
                 let webhook = null;
-                if(webhooks.array().length == 0){
+                if (webhooks.array().length == 0) {
                     webhook = await channel.createWebhook('Good Vibes Bot Status', {
                         avatar: 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg',
                     });
                 }
-                else{
+                else {
                     webhook = webhooks.first();
                 }
                 webhook.send(args.join(" "))
@@ -24,7 +24,7 @@ module.exports = {
                     .catch(console.error);
             }
         }
-        catch(err) {
+        catch (err) {
             console.error(err);
         }
         finally {
@@ -36,12 +36,12 @@ module.exports = {
 
                     const webhooks = await channel.fetchWebhooks();
                     let webhook = null;
-                    if(webhooks.array().length == 0){
+                    if (webhooks.array().length == 0) {
                         webhook = await channel.createWebhook('Good Vibes Bot Status', {
                             avatar: 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg',
                         });
                     }
-                    else{
+                    else {
                         webhook = webhooks.first();
                     }
                     webhook.send(args.join(" "))
@@ -49,8 +49,34 @@ module.exports = {
                         .catch(console.error);
                 }
             }
-            catch(err) {
+            catch (err) {
                 console.error(err);
+            }
+            finally {
+                try {
+                    let guild = client.guilds.cache.get('770353040803889162');
+                    if (guild) {
+                        const webhookChannelID = '779476099637313605';
+                        const channel = client.channels.cache.get(webhookChannelID)
+
+                        const webhooks = await channel.fetchWebhooks();
+                        let webhook = null;
+                        if (webhooks.array().length == 0) {
+                            webhook = await channel.createWebhook('Good Vibes Bot Status', {
+                                avatar: 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg',
+                            });
+                        }
+                        else {
+                            webhook = webhooks.first();
+                        }
+                        webhook.send(args.join(" "))
+                            .then(message => console.log(`Sent message: ${message.content}`))
+                            .catch(console.error)
+                    }
+                }
+                catch (err) {
+                    console.log(err)
+                }
             }
         }
     }
