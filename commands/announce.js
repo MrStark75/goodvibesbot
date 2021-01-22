@@ -13,7 +13,7 @@ module.exports = {
                     const webhooks = await channel.fetchWebhooks();
                     let webhook = null;
                     if (webhooks.array().length == 0) {
-                        webhook = await channel.createWebhook('Good Vibes Bot Status', {
+                        webhook = await channel.createWebhook('Good Vibes Bot Status/Updates', {
                             avatar: 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg',
                         });
                     }
@@ -38,7 +38,7 @@ module.exports = {
                         const webhooks = await channel.fetchWebhooks();
                         let webhook = null;
                         if (webhooks.array().length == 0) {
-                            webhook = await channel.createWebhook('Good Vibes Bot Status', {
+                            webhook = await channel.createWebhook('Good Vibes Bot Status/Updates', {
                                 avatar: 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg',
                             });
                         }
@@ -63,7 +63,7 @@ module.exports = {
                             const webhooks = await channel.fetchWebhooks();
                             let webhook = null;
                             if (webhooks.array().length == 0) {
-                                webhook = await channel.createWebhook('Good Vibes Bot Status', {
+                                webhook = await channel.createWebhook('Good Vibes Bot Status/Updates', {
                                     avatar: 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg',
                                 });
                             }
