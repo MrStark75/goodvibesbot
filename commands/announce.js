@@ -46,7 +46,6 @@ module.exports = {
                             webhook = webhooks.first();
                         }
                         webhook.send(args.join(" "))
-                            .then(message => console.log(`Sent message: ${message.content}`))
                             .catch(console.error);
                     }
                 }
@@ -71,7 +70,6 @@ module.exports = {
                                 webhook = webhooks.first();
                             }
                             webhook.send(args.join(" "))
-                                .then(message => console.log(`Sent message: ${message.content}`))
                                 .catch(console.error)
                         }
                     }
