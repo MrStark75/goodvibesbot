@@ -3,13 +3,19 @@ require('dotenv').config();
 
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
 
+const deletedMessages = new Discord.Collection();
+
 client.commands = new Discord.Collection();
 client.event = new Discord.Collection();
 
 ['command_handler', 'event_handler'].forEach(handler => {
   const H = require(`./handlers/${handler}`); 
-  H(client, Discord);
+  H(client, Discord, deletedMessages);
 
+});
+
+client.on('messageDelete', message => {
+  deletedMessages.set(message.channel.id, message);
 });
 
 // Looks for message
