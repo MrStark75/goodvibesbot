@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-module.exports = (client, Discord, deletedMessages, message) => {
+module.exports = (client, Discord, deletedMessages, editedMessages, message) => {
     const prefix = '%';
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -11,5 +11,5 @@ module.exports = (client, Discord, deletedMessages, message) => {
 
     const command = client.commands.get(cmd);
 
-    if (command) command.execute(client, message, args, Discord, deletedMessages);
+    if (command) command.execute(client, message, args, Discord, deletedMessages, editedMessages);
 }
