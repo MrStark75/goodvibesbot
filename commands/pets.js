@@ -1,7 +1,8 @@
 module.exports = {
     name: 'pets',
+    aliases: ['pet'],
     description: 'this gives pet pictures',
-    execute(client, message, args, Discord){
+    execute(client, message, args, Discord, cmd){
         let replies = [
     "https://cdn.discordapp.com/attachments/682788541637328915/781722150200672306/image0.jpg", 
     "https://cdn.discordapp.com/attachments/682788541637328915/781722150452723742/image1.png",

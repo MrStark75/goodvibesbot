@@ -1,7 +1,7 @@
 module.exports = {
     name: 'help',
     description: 'Shows the help menu',
-    execute(client, message, args, Discord) {
+    execute(client, message, args, Discord, cmd) {
         const newEmbed = new Discord.MessageEmbed()
         .setColor('#6b1cb0')
         .setTitle('Help Menu')

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'vibe',
     description: 'this is a heyo command!',
-    execute(client, message, args, Discord){
+    execute(client, message, args, Discord, cmd){
         let replies = ["idk", "Relax and take some deep breaths.", "Listen to some Music.", "AOOOOOOOOOGA", 
         "When you feel like quitting, think about why you started.", "Focus on the step in front of you, not the whole staicase.",
         "Lavender.", "Get glowing. The world needs your Magic.", "You have two choices: evolve or repeat.", "Three months from now, you will thank yourself.", "Make sure to get some water.",

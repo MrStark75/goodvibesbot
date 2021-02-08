@@ -1,7 +1,7 @@
 module.exports = {
     name: 'wholesome',
     description: 'This command presents a wholesome gif.',
-    execute(client, message, args, Discord){
+    execute(client, message, args, Discord, cmd){
         let replies = ["https://i.redd.it/se2ij0rv6sw41.gif", "https://data.whicdn.com/images/183274876/original.gif",
          "https://64.media.tumblr.com/2f884a7119938942111598710d26f6fd/tumblr_n1w6hqKuL61qc4uvwo1_500.gifv",
          "https://i.gifer.com/Dccu.gif", "https://i.pinimg.com/originals/16/f3/b4/16f3b400b546c94f92e90bf24e1bcdf3.gif",

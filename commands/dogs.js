@@ -1,7 +1,8 @@
 module.exports = {
     name: 'dogs',
+    aliases: ['dog'],
     description: 'This command presents a dog picture.',
-    execute(client, message, args, Discord){
+    execute(client, message, args, Discord, cmd){
         let replies = ["https://i.pinimg.com/originals/b3/49/54/b34954a4243ee09850c73a085ac1810d.jpg",
          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*",
          "https://www.thesprucepets.com/thmb/sfuyyLvyUx636_Oq3Fw5_mt-PIc=/3760x2820/smart/filters:no_upscale()/adorable-white-pomeranian-puppy-spitz-921029690-5c8be25d46e0fb000172effe.jpg",

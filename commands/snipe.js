@@ -1,7 +1,7 @@
 module.exports = {
     name: 'snipe',
     description: 'Shows a users last deleted message for a channel',
-    execute(client, message, args, Discord, deletedMessages) {
+    execute(client, message, args, Discord, cmd, deletedMessages) {
         const msg = deletedMessages.get(message.channel.id);
         if (!msg) return message.channel.send("There's nothing to snipe!");
 

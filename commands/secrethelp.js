@@ -1,7 +1,7 @@
 module.exports = {
     name: 'secrethelp',
     description: 'Shows the secret/emote help menu',
-    execute(client, message, args, Discord) {
+    execute(client, message, args, Discord, cmd) {
         const newSecretEmbed = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle('Secret/Emote Help Menu')

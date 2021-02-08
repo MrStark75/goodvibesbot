@@ -1,7 +1,7 @@
 module.exports = {
     name: 'announce',
     description: 'Sends a webhook annoucment to the channel that I specify',
-    async execute(client, message, args, Discord) {
+    async execute(client, message, args, Discord, cmd) {
         if (message.member.roles.cache.some(r => r.name === "ADMIN")) {
             try {
                 let guild = client.guilds.cache.get('710185464807686195');
