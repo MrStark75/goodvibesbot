@@ -1,5 +1,6 @@
 module.exports = {
     name: 'vibe',
+    cooldown: 2,
     description: 'this is a heyo command!',
     execute(client, message, args, Discord, cmd){
         let replies = ["idk", "Relax and take some deep breaths.", "Listen to some Music.", "AOOOOOOOOOGA", 

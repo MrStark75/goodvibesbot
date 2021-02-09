@@ -1,5 +1,6 @@
 module.exports = {
     name: 'help',
+    cooldown: 10,
     description: 'Shows the help menu',
     execute(client, message, args, Discord, cmd) {
         const newEmbed = new Discord.MessageEmbed()
