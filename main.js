@@ -17,10 +17,12 @@ client.event = new Discord.Collection();
 
 client.on('messageDelete', message => {
   deletedMessages.set(message.channel.id, message);
+  setTimeout(() => deletedMessages.delete(message.channel.id, message), 60000);
 });
 
 client.on('messageUpdate', message => {
   editedMessages.set(message.channel.id, message);
+  setTimeout(() => editedMessages.delete(message.channel.id, message), 60000);
 });
 
 // Looks for message
