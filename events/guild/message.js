@@ -38,7 +38,8 @@ module.exports = (client, Discord, deletedMessages, editedMessages, message) => 
         command.execute(client, message, args, Discord, cmd, deletedMessages, editedMessages);
     }
     catch (err) {
-        message.reply('There was an error trying to execute this command!');
+        message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
         console.error(err)
+        client.users.cache.get('394271520186302474').send(`"${message.author.username}" has thrown an error in "${message.guild}" at ${message.url}`);
     }
 }
