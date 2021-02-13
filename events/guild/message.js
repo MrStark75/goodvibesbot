@@ -41,6 +41,11 @@ module.exports = (client, Discord, deletedMessages, editedMessages, message) => 
     catch (err) {
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
         console.error(err)
-        client.users.cache.get('394271520186302474').send(`"${message.author.username}" has thrown an error in "${message.guild}" at ${message.url}`);
+
+        async function DMcreator(client, Discord, deletedMessages, editedMessages, message) {
+            const creator = await client.fetchApplication();
+            creator.owner.send(`"${message.author.username}" has thrown an error in "${message.guild}" at ${message.url}`);
+        }
+        DMcreator(client, Discord, deletedMessages, editedMessages, message);
     }
 }
