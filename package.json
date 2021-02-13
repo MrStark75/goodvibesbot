@@ -1,6 +1,6 @@
 {
   "name": "good-vibes-bot",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Some good vibes are coming from here.",
   "main": "main.js",
   "scripts": {
