@@ -12,6 +12,7 @@ module.exports = (client, Discord, deletedMessages, editedMessages, message) => 
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+    if (!command) return;
 
     if (!cooldowns.has(command.name)) {
         cooldowns.set(command.name, new Discord.Collection());
