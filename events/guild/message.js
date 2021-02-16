@@ -12,7 +12,7 @@ module.exports = (client, Discord, deletedMessages, editedMessages, message) => 
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
-    if (!command) return message.channel.send("That command doesn't exist! Check for spelling errors.");
+    if (!command) return message.channel.send('This command does not exist, type `%help` for info on commands.');
 
     if (!cooldowns.has(command.name)) {
         cooldowns.set(command.name, new Discord.Collection());
@@ -26,9 +26,11 @@ module.exports = (client, Discord, deletedMessages, editedMessages, message) => 
         const expiration_time = time_stamps.get(message.author.id) + cooldown_amount;
 
         if (current_time < expiration_time) {
-            const time_left = (expiration_time - current_time) / 1000;
+            let timeMinutes_left = (expiration_time - current_time) / 60000;
+            let time_Secondsleft = (expiration_time - current_time) / 1000;
+            if (timeMinutes_left < 1) {timeMinutes_left = 0;}
 
-            return message.reply(`Please wait ${time_left.toFixed(1)} more seconds before using ${command.name}!`);
+            return message.reply(`Please wait ${timeMinutes_left.toFixed(0)} minute(s) or ${time_Secondsleft.toFixed(1)} second(s) before reusing the "${command.name}" command!`);
         }
     }
 
@@ -40,7 +42,7 @@ module.exports = (client, Discord, deletedMessages, editedMessages, message) => 
     }
     catch (err) {
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
-        console.error(err)
+        console.error(err);
 
         async function DMcreator(client, Discord, deletedMessages, editedMessages, message) {
             const creator = await client.fetchApplication();
