@@ -1,5 +1,6 @@
 module.exports = {
     name: 'wholesome',
+    aliases: ['whole'],
     description: 'This command presents a wholesome gif.',
     execute(client, message, args, Discord, cmd){
         let replies = ["https://i.redd.it/se2ij0rv6sw41.gif", "https://data.whicdn.com/images/183274876/original.gif",
