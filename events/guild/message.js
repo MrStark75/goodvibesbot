@@ -1,12 +1,32 @@
 require('dotenv').config();
+const { deletedMessages } = require('../../main');
+const profileModel = require(`../../models/profileSchema`);
 
 const cooldowns = new Map();
 
-module.exports = (client, Discord, deletedMessages, editedMessages, message) => {
+module.exports = async (client, Discord, message) => {
     const prefix = '%';
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     if (!message.guild) return;
+
+    let profileData;
+    try {
+        profileData = await profileModel.findOne({ userID: message.author.id });
+        if(!profileData) {
+            let profile = await profileModel.create({
+                userID: message.author.id,
+                serverID: message.guild.id,
+                userTag: message.author.tag,
+            });
+            profile.save();
+        }
+    }
+    catch(err) {
+        console.error(err)
+        message.reply(`Could not load profile data or could not create profile.`);
+    }
+
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
@@ -38,16 +58,16 @@ module.exports = (client, Discord, deletedMessages, editedMessages, message) => 
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
 
     try {
-        command.execute(client, message, args, Discord, cmd, deletedMessages, editedMessages);
+        command.execute(client, message, args, Discord, cmd);
     }
     catch (err) {
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
         console.error(err);
 
-        async function DMcreator(client, Discord, deletedMessages, editedMessages, message) {
+        async function DMcreator(client, Discord, message) {
             const creator = await client.fetchApplication();
             creator.owner.send(`"${message.author.username}" has thrown an error in "${message.guild}" at ${message.url}`);
         }
-        DMcreator(client, Discord, deletedMessages, editedMessages, message);
+        DMcreator(client, Discord, message);
     }
 }

@@ -1,7 +1,9 @@
+const { editedMessages } = require(`../main`)
+
 module.exports = {
     name: 'editsnipe',
     description: 'Shows a users last edit to a message',
-    execute(client, message, args, Discord, cmd, deletedMessages, editedMessages) {
+    execute(client, message, args, Discord, cmd) {
         const msg = editedMessages.get(message.channel.id);
         if (!msg) return message.channel.send("There's nothing to snipe!");
 
