@@ -18,6 +18,7 @@ module.exports = async (client, Discord, message) => {
                 userID: message.author.id,
                 serverID: message.guild.id,
                 userTag: message.author.tag,
+                coins: 100
             });
             profile.save();
         }
@@ -58,7 +59,7 @@ module.exports = async (client, Discord, message) => {
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
 
     try {
-        command.execute(client, message, args, Discord, cmd);
+        command.execute(client, message, args, Discord, cmd, profileData);
     }
     catch (err) {
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
