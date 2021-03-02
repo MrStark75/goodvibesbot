@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'balence',
+    name: 'balance',
     cooldown: 5,
     aliases: ['bal'],
     description: 'Check your balence',

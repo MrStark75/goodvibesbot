@@ -9,11 +9,15 @@ module.exports = {
         .setAuthor('Good Vibes Bot', 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg')
         .setDescription('This shows the commands for Good Vibes Bot.')
         .addFields(
-            {name: '%vibe', value: 'Gives some good vibes.'},
-            {name: '%breathe', value: 'Shows a simple breath exercise.'},
-            {name: '%wholesome', value: 'Shows some wholesome gifs.'},
-            {name: '%dogs', value: 'Shows some cute dogs pics.'},
-            {name: '%pets', value: "Shows the many pictures of everyone's pets"},
+            {name: '%vibe', value: 'Gives some good vibes.', inline: true},
+            {name: '%breathe', value: 'Shows a simple breath exercise.', inline: true},
+            {name: '%wholesome', value: 'Shows some wholesome gifs.', inline: true},
+            {name: '%dogs', value: 'Shows some cute dogs pics.', inline: true},
+            {name: '%pets', value: "Shows the many pictures of everyone's pets", inline: true},
+            {name: '%praise or %beg', value: 'Praise or send good vibes to people to get cash money', inline: true},
+            {name: '%balance', value: 'Get your current balance', inline: true},
+            {name: '%steal @userTarget', value: 'Steal a random amount of money from a specified user.', inline: true},
+            {name: '%rich', value: 'See the richest users, from top to bottom.', inline: true},
         )
         .setTimestamp()
 	    .setFooter('Good Vibes Bot is under Copyright', 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg');

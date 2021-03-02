@@ -1,8 +1,9 @@
 const profileModel = require(`../models/profileSchema`);
 
 module.exports = {
-    name: 'beg',
-    cooldown: 90,
+    name: 'praise',
+    aliases: ['beg'],
+    cooldown: 20,
     description: 'a beg command to get coins',
     async execute(client, message, args, Discord, cmd) {
         const random = Math.floor(Math.random() * 100) + 1;
@@ -12,6 +13,6 @@ module.exports = {
             $inc: { coins: random }
         });
         
-        return message.channel.send(`You begged and recieved ${random} coins.`);
+        return message.channel.send(`You praised a person on the street with good vibes, they gave you ${random} coins to thank you.`);
     }
 }
