@@ -10,7 +10,7 @@ module.exports = {
             return message.reply('You have no coins yet! Do `%beg` first.');
         }
 
-        message.channel.send(`You have ${profileData.coins} coins.`);
+        message.reply(`You have **${profileData.coins}** coins.`);
         
     }
 }

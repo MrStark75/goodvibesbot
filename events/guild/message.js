@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { deletedMessages } = require('../../main');
 const profileModel = require(`../../models/profileSchema`);
 
 const cooldowns = new Map();
@@ -11,14 +10,16 @@ module.exports = async (client, Discord, message) => {
     if (!message.guild) return;
 
     let profileData;
+    let itemData;
     try {
         profileData = await profileModel.findOne({ userID: message.author.id });
-        if(!profileData) {
+        if (!profileData) {
             let profile = await profileModel.create({
                 userID: message.author.id,
                 serverID: message.guild.id,
                 userTag: message.author.tag,
-                coins: 100
+                coins: 100,
+                gun: 0,
             });
             profile.save();
         }
@@ -59,7 +60,7 @@ module.exports = async (client, Discord, message) => {
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
 
     try {
-        command.execute(client, message, args, Discord, cmd, profileData);
+        command.execute(client, message, args, Discord, cmd, profileData, itemData);
     }
     catch (err) {
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');

@@ -13,6 +13,6 @@ module.exports = {
             $inc: { coins: random }
         });
         
-        return message.channel.send(`You praised a person on the street with good vibes, they gave you ${random} coins to thank you.`);
+        return message.channel.send(`You praised a person on the street with good vibes, they gave you **${random}** coins to thank you.`);
     }
 }

@@ -19,7 +19,7 @@ module.exports = {
         .setDescription("Richest users from top to bottom:");
         for(const allData of sorted) {
             try {
-                embed.addField(allData.userTag, `has ${allData.coins} coins.`);
+                embed.addField(allData.userTag, `has **${allData.coins}** coins.`);
             } catch {
                 return message.reply(`Something went wrong and could not list the users.`)
             }
