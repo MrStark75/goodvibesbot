@@ -29,7 +29,9 @@ module.exports = {
             const sellGun = await profileModel.findOneAndUpdate({
                 userID: message.author.id
             }, {
-                $inc: { gun: -amount }
+                items: {
+                    gun: { quantity: -amount }
+                }
             })
         }
 

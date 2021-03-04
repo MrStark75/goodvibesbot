@@ -27,13 +27,8 @@ module.exports = {
         } else {
             this.cooldown = 0;
         }
-        
-        if (amount > profileData.coins) {
-            return message.reply(`You do not have enough coins to buy ${item}!`);
-        }
 
         if (item === 'gun') {
-
             const cost = amount * 50000;
 
             if (wallet < cost) {
@@ -45,7 +40,8 @@ module.exports = {
             const buyGun = await profileModel.findOneAndUpdate({
                 userID: message.author.id
             }, {
-                $inc: { gun: amount, coins: -cost }
+                gun: { quantity: amount },
+                $inc: { coins: -cost }
             });
         }
 

@@ -10,19 +10,53 @@ module.exports = async (client, Discord, message) => {
     if (!message.guild) return;
 
     let profileData;
-    let itemData;
     try {
-        profileData = await profileModel.findOne({ userID: message.author.id });
+        profileData = await profileModel.findOne({ userID: message.author.id })
         if (!profileData) {
             let profile = await profileModel.create({
                 userID: message.author.id,
                 serverID: message.guild.id,
                 userTag: message.author.tag,
                 coins: 100,
-                gun: 0,
+                items: {
+                    type: Array,
+                    gun: {
+                        type: Object,
+                        description: 'A gun that sets a targets coins to 0',
+                        sellPrice: 20000,
+                        buyPrice: 50000,
+                        quantity: 0,
+                    },
+                    bulletProofVest: {
+                        type: Object,
+                        description: 'A gun that sets a targets coins to 0',
+                        sellPrice: 2000,
+                        buyPrice: 5000,
+                        quantity: 0,
+                    }
+                }
             });
             profile.save();
         }
+        await profileData.updateOne({ $set: { 
+            items: {
+                type: Array,
+                gun: {
+                    type: Object,
+                    description: 'A gun that sets a targets coins to 0',
+                    sellPrice: 20000,
+                    buyPrice: 50000,
+                    quantity: 0,
+                },
+                bulletProofVest: {
+                    type: Object,
+                    description: 'A gun that sets a targets coins to 0',
+                    sellPrice: 2000,
+                    buyPrice: 5000,
+                    quantity: 0,
+                }
+            }
+        } });
     }
     catch(err) {
         console.error(err)
@@ -60,7 +94,7 @@ module.exports = async (client, Discord, message) => {
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
 
     try {
-        command.execute(client, message, args, Discord, cmd, profileData, itemData);
+        command.execute(client, message, args, Discord, cmd, profileData);
     }
     catch (err) {
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
