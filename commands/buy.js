@@ -43,8 +43,29 @@ module.exports = {
                 gun: { quantity: amount },
                 $inc: { coins: -cost }
             });
+
+            return message.channel.send(`Successfully bought ${amount} ${item}(s)!`);
+
         }
 
-        return message.channel.send(`Successfully bought ${amount} ${item}(s)!`);
+        if (item === 'vest') {
+            const cost = amount * 5000;
+
+            if (wallet < cost) {
+                return message.reply(`You do not have enough coins to buy ${item}!`);
+            } else {
+                this.cooldown = 0;
+            }
+
+            const buyVest = await profileModel.findOneAndUpdate({
+                userID: message.author.id
+            }, {
+                bulletProofVest: { quantity: amount },
+                $inc: { coins: -cost }
+            })
+
+            return message.channel.send(`Successfully bought ${amount} ${item}(s)!`);
+
+        }
     }
 }

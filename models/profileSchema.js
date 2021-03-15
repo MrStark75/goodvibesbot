@@ -5,6 +5,9 @@ const profileSchema = new mongoose.Schema({
     serverID: { type: String, require: true },
     userTag: { type: String, require: true },
     coins: { type: Number, default: 100 },
+    items: {
+        type: Array
+    }
 });
 
 const model = mongoose.model('ProfileModels', profileSchema);

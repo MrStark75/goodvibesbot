@@ -1,4 +1,6 @@
 require('dotenv').config();
+const { BitField } = require('discord.js');
+const { now } = require('mongoose');
 const profileModel = require(`../../models/profileSchema`);
 
 const cooldowns = new Map();
@@ -18,45 +20,9 @@ module.exports = async (client, Discord, message) => {
                 serverID: message.guild.id,
                 userTag: message.author.tag,
                 coins: 100,
-                items: {
-                    type: Array,
-                    gun: {
-                        type: Object,
-                        description: 'A gun that sets a targets coins to 0',
-                        sellPrice: 20000,
-                        buyPrice: 50000,
-                        quantity: 0,
-                    },
-                    bulletProofVest: {
-                        type: Object,
-                        description: 'A gun that sets a targets coins to 0',
-                        sellPrice: 2000,
-                        buyPrice: 5000,
-                        quantity: 0,
-                    }
-                }
             });
             profile.save();
         }
-        await profileData.updateOne({ $set: { 
-            items: {
-                type: Array,
-                gun: {
-                    type: Object,
-                    description: 'A gun that sets a targets coins to 0',
-                    sellPrice: 20000,
-                    buyPrice: 50000,
-                    quantity: 0,
-                },
-                bulletProofVest: {
-                    type: Object,
-                    description: 'A gun that sets a targets coins to 0',
-                    sellPrice: 2000,
-                    buyPrice: 5000,
-                    quantity: 0,
-                }
-            }
-        } });
     }
     catch(err) {
         console.error(err)
@@ -82,16 +48,25 @@ module.exports = async (client, Discord, message) => {
         const expiration_time = time_stamps.get(message.author.id) + cooldown_amount;
 
         if (current_time < expiration_time) {
-            let timeMinutes_left = (expiration_time - current_time) / 60000;
-            let time_Secondsleft = (expiration_time - current_time) / 1000;
+            const time = expiration_time - current_time;
+
+            let timeHours_left = (time / 3600000);
+            let timeMinutes_left = ((time % 3600000) / 60000);
+            let timeSeconds_left = ((time % 60000) / 1000);
             if (timeMinutes_left < 1) {timeMinutes_left = 0;}
 
-            return message.reply(`Please wait ${timeMinutes_left.toFixed(0)} minute(s) or ${time_Secondsleft.toFixed(1)} second(s) before reusing the "${command.name}" command!`);
+            return message.reply(`Please wait ${timeHours_left.toFixed(0)}h and ${timeMinutes_left.toFixed(0)}m and ${timeSeconds_left.toFixed(1)}s before reusing the "${command.name}" command!`);
         }
     }
 
     time_stamps.set(message.author.id, current_time);
-    setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
+
+    try {
+        setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount)
+    }
+    catch(err) {
+        console.error(err)
+    }
 
     try {
         command.execute(client, message, args, Discord, cmd, profileData);
