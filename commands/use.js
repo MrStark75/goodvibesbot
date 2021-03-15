@@ -6,6 +6,10 @@ module.exports = {
     description: 'Use an item',
     async execute(client, message, args, Discord, cmd, profileData) {
 
+        if (!profileData) {
+            return message.reply('Please use `%beg` first to create profile, then steal from a user.');
+        }
+
         if (!(args[0])) {
             return message.reply('Please specify an item to use!')
         } else {

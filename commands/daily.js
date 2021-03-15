@@ -6,6 +6,11 @@ module.exports = {
     cooldown: 86400,
     description: 'daily rewards in coins',
     async execute(client, message, args, Discord, cmd, profileData) {
+
+        if (!profileData) {
+            return message.reply('Please use `%beg` first to create profile, then collect your daily.');
+        }
+
         const addAmount = await profileModel.findOneAndUpdate({
             userID: message.author.id,
         }, {
