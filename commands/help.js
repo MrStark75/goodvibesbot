@@ -20,8 +20,8 @@ module.exports = {
             {name: '%rich', value: 'See the richest users, from top to bottom.', inline: true},
         )
         .setTimestamp()
-	    .setFooter('Good Vibes Bot is under TechnoNinja copyright system', 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg');
-
+	    .setFooter('Good Vibes Bot is under TechnoNinja supervision', 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg');
+      
         message.channel.send(newEmbed);
     }
 }
