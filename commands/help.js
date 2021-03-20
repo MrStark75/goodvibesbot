@@ -21,7 +21,7 @@ module.exports = {
         )
         .setTimestamp()
 	    .setFooter('Good Vibes Bot is under TechnoNinja supervision', 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg');
-
+      
         message.channel.send(newEmbed);
     }
 }
