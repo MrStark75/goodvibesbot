@@ -19,7 +19,7 @@ module.exports = {
             .setColor('#6b1cb0')
             .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
             .setDescription(messageArgs)
-            .setTimestamp()
+            .setTimestamp();
 
             channel.send(embed).then((msg) => {
                 msg.react('✅');

@@ -13,11 +13,13 @@ module.exports = {
             {name: '%breathe', value: 'Shows a simple breath exercise.', inline: true},
             {name: '%wholesome', value: 'Shows some wholesome gifs.', inline: true},
             {name: '%dogs', value: 'Shows some cute dogs pics.', inline: true},
-            {name: '%pets', value: "Shows the many pictures of everyone's pets", inline: true},
-            {name: '%praise or %beg', value: 'Praise or send good vibes to people to get cash money', inline: true},
-            {name: '%balance', value: 'Get your current balance', inline: true},
+            {name: '%pets', value: "Shows the many pictures of everyone's pets.", inline: true},
+            {name: '%praise or %beg', value: 'Praise or send good vibes to people to get cash money.', inline: true},
+            {name: '%balance', value: 'Get your current balance.', inline: true},
+            {name: '%daily', value: 'Collect your daily coins.'},
             {name: '%steal @userTarget', value: 'Steal a random amount of money from a specified user.', inline: true},
             {name: '%rich', value: 'See the richest users, from top to bottom.', inline: true},
+            {name: '%suggestions', value: 'Make suggestions about a certain topic.', inline: true},
         )
         .setTimestamp()
 	    .setFooter('Good Vibes Bot is under TechnoNinja supervision', 'https://cdn4.vectorstock.com/i/1000x1000/44/28/neon-sign-good-vibes-only-vector-27224428.jpg');
