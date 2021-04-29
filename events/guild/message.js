@@ -6,7 +6,7 @@ const profileModel = require(`../../models/profileSchema`);
 const cooldowns = new Map();
 
 module.exports = async (client, Discord, message) => {
-    const prefix = '%';
+    const prefix = 'GVB';
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     if (!message.guild) return;
