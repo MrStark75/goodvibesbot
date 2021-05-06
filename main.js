@@ -39,7 +39,7 @@ client.on('messageUpdate', message => {
 // Looks for message
 client.on('message', msg => {
   // Looks at content
-  if (msg.content === "64") {
+  if (msg.content === "21") {
     msg.reply('AHA YOU FOUND ' + msg.content);
   }
 });

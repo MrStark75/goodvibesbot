@@ -3,6 +3,8 @@ const { BitField } = require('discord.js');
 const { now } = require('mongoose');
 const profileModel = require(`../../models/profileSchema`);
 
+const DisabledCommands = "true";
+
 const cooldowns = new Map();
 
 module.exports = async (client, Discord, message) => {
@@ -70,7 +72,14 @@ module.exports = async (client, Discord, message) => {
     }
 
     try {
-        command.execute(client, message, args, Discord, cmd, profileData);
+
+        if (DisabledCommands === 'true') {
+            message.channel.send('All commands are disabled at this time, until the wellbeing of the administator is healthy. Words of encouragement are welcome during this difficult time. Thank you!');
+            return;
+        } else {
+            command.execute(client, message, args, Discord, cmd, profileData);
+        }
+
     }
     catch (err) {
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
