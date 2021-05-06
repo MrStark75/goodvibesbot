@@ -74,7 +74,7 @@ module.exports = async (client, Discord, message) => {
     try {
 
         if (DisabledCommands === 'true') {
-            message.channel.send('All commands are disabled at this time, until the wellbeing of the administator is healthy. Words of encouragement are welcome during this difficult time. Thank you!');
+            message.channel.send('All commands are disabled at this time, until the wellbeing of the administator is healthy. Words of encouragement are welcome during this time. Thank you!');
             return;
         } else {
             command.execute(client, message, args, Discord, cmd, profileData);
