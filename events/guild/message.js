@@ -8,7 +8,7 @@ const DisabledCommands = "true";
 const cooldowns = new Map();
 
 module.exports = async (client, Discord, message) => {
-    const prefix = 'GVB';
+    const prefix = '%';
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     if (!message.guild) return;
