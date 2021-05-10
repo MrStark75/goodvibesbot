@@ -3,7 +3,7 @@ const { BitField } = require('discord.js');
 const { now } = require('mongoose');
 const profileModel = require(`../../models/profileSchema`);
 
-const DisabledCommands = "true";
+const DisabledCommands = "false";
 
 const cooldowns = new Map();
 
@@ -71,6 +71,12 @@ module.exports = async (client, Discord, message) => {
         console.error(err)
     }
 
+    let tipsArray = ["Did you know that the snipe command has a 1-minute timer before the deleted message is unretriveable?"];
+    const tips = tipsArray[Math.floor(Math.random() * tipsArray.length)];
+
+    let yesOrNo = ['true', 'false', 'false', 'false', 'false', 'false'];
+    const showTips = yesOrNo[Math.floor(Math.random() * yesOrNo.length)];
+
     try {
 
         if (DisabledCommands === 'true') {
@@ -78,6 +84,13 @@ module.exports = async (client, Discord, message) => {
             return;
         } else {
             command.execute(client, message, args, Discord, cmd, profileData);
+
+            if (showTips === 'true') {
+                message.channel.send(tips);
+            } else {
+                return;
+            }
+
         }
 
     }
