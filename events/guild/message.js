@@ -86,7 +86,7 @@ module.exports = async (client, Discord, message) => {
             command.execute(client, message, args, Discord, cmd, profileData);
 
             if (showTips === 'true') {
-                message.channel.send(tips);
+                message.channel.send(`**Tips:** *${tips}*`);
             } else {
                 return;
             }
