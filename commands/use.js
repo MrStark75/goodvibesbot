@@ -59,7 +59,7 @@ module.exports = {
                 const removeGun = await profileModel.findOneAndUpdate({
                     userID: message.author.id
                 }, {
-                    gun: { quantity: -1 }
+                    $inc: { gun: -1 }
                 });
 
                 return message.reply(`You shoot a bullet towards ${targetMentions} with a **${item}** and they lose **${randomNumber} coins**!`);
