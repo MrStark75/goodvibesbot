@@ -103,6 +103,8 @@ module.exports = {
                     }
                 }
             }
+        } else {
+            return message.channel.send('This command does not exist, type `%help` for info on commands.');
         }
     }
 }
