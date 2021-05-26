@@ -62,7 +62,7 @@ module.exports = {
                     gun: { quantity: -1 }
                 });
 
-                return message.reply(`You shoot a bullet towards ${targetMentions} with a **${item}** and have lost all their **coins**!`);
+                return message.reply(`You shoot a bullet towards ${targetMentions} with a **${item}** and they lose **${randomNumber} coins**!`);
 
             }
         }
