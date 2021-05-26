@@ -43,10 +43,13 @@ module.exports = {
             }
 
             if (randomCaught === 'false') {
+
+                const randomNumber = Math.floor(Math.random() * 1000) + 100;
+
                 const useGunOnTarget = await profileModel.findOneAndUpdate({
                     userID: target
                 }, {
-                    $set: { coins: 0 }
+                    $inc: { coins: -randomNumber }
                 });
     
                 if (!useGunOnTarget) {
