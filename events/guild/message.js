@@ -69,7 +69,14 @@ module.exports = async (client, Discord, message) => {
         console.error(err)
     }
 
-    let tipsArray = ["Did you know that the snipe command has a 1-minute timer before the deleted message is unretriveable?"];
+    let tipsArray = [
+        "Did you know that the snipe command has a 1-minute timer before the deleted message is unretriveable?",
+        "Have you tried the economy here on Good Vibes bot? Try **%beg** to start your journey!",
+        "The economy here on Good Vibes bot has a daily, try **%daily** to get your daily 1000 coins!",
+        "Did someone delete a message before you could see? Try **%snipe** to get there message!",
+        "Did you know that this bot was coded using the language JavaScript? Which is the language your browser uses to produce web pages!",
+        "Did you know you can steal other users coins? Try **%steal <@user>** to try and steal some coins, be careful or you may get caught!"
+    ];
     const tips = tipsArray[Math.floor(Math.random() * tipsArray.length)];
 
     let yesOrNo = ['true', 'false', 'false', 'false', 'false', 'false'];
