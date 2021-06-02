@@ -52,11 +52,12 @@ module.exports = async (client, Discord, message) => {
         if (current_time < expiration_time) {
             const time = expiration_time - current_time;
 
-            let timeMinutes_left = ((time % 3600000) / 60000);
-            let timeSeconds_left = ((time % 60000) / 1000);
-            if (timeMinutes_left < 1) {timeMinutes_left = 0;}
+            const seconds_left = Math.floor( (time/1000) % 60 );
+            const minutes_left = Math.floor( (time/1000/60) % 60 );
+            const hours_left = Math.floor( (time/(1000*60*60)) % 24 );
+            const days_left = Math.floor( time/(1000*60*60*24) );
 
-            return message.reply(`Please wait ${timeMinutes_left.toFixed(0)}m and ${timeSeconds_left.toFixed(1)}s before reusing the "${command.name}" command!`);
+            return message.reply(`Please wait ${hours_left.toFixed(0)}h and ${minutes_left.toFixed(0)}m and ${seconds_left.toFixed(1)}s before reusing the "${command.name}" command!`);
         }
     }
 
