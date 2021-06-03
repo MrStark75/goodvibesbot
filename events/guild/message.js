@@ -80,7 +80,7 @@ module.exports = async (client, Discord, message) => {
     ];
     const tips = tipsArray[Math.floor(Math.random() * tipsArray.length)];
 
-    let yesOrNo = ['true', 'false', 'false', 'false', 'false', 'false'];
+    let yesOrNo = ['true', 'false', 'false', 'false', 'false'];
     const showTips = yesOrNo[Math.floor(Math.random() * yesOrNo.length)];
 
     try {

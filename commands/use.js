@@ -3,6 +3,7 @@ const profileModel = require('../models/profileSchema');
 
 module.exports = {
     name: 'use',
+    cooldown: 30,
     description: 'Use an item',
     async execute(client, message, args, Discord, cmd, profileData) {
 
