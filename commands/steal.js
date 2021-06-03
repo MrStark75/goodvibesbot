@@ -26,7 +26,7 @@ module.exports = {
         
 
         if (randomCaught === 'true') {
-            message.reply(`You were caught stealing from ${targetMentions} and did not recieve any coins!`);
+            return message.reply(`You were caught stealing from ${targetMentions} and did not recieve any coins!`);
         }
 
         if (randomCaught === 'false') {

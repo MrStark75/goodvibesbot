@@ -1,9 +1,8 @@
-const { MessageManager } = require('discord.js');
 const profileModel = require('../models/profileSchema');
 
 module.exports = {
     name: 'use',
-    cooldown: 30,
+    cooldown: 20,
     description: 'Use an item',
     async execute(client, message, args, Discord, cmd, profileData) {
 
