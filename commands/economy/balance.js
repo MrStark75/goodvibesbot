@@ -7,9 +7,10 @@ module.exports = {
     description: 'Check your balence',
     async execute(client, message, args, Discord, cmd, profileData) {
 
-        const user = message.mentions.users.first().id || message.author.id;
+        const user = message.mentions.users.first() || message.author;
         const userTag = message.mentions.users.first() || message.author;
-        const wallet = await profileModel.findOne({ userID: user })
+
+        const wallet = await profileModel.findOne({ userID: user.id })
 
         if (!profileData) {
             return message.reply('You have no coins yet! Do `%beg` first.');
