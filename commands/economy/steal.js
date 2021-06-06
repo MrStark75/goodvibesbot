@@ -8,6 +8,8 @@ module.exports = {
     async execute(client, message, args, Discord, cmd, profileData) {
         if (!profileData) {
             return message.reply('Please use `%beg` first to create profile, then steal from a user.');
+        } else {
+            this.cooldown = 0;
         }
 
         if (!(args[0])) {
@@ -23,10 +25,10 @@ module.exports = {
         const target = message.mentions.users.first().id;
         const targetMentions = (args[0]);
 
-        
-
         if (randomCaught === 'true') {
             return message.reply(`You were caught stealing from ${targetMentions} and did not recieve any coins!`);
+        } else {
+            this.cooldown = 60;
         }
 
         if (randomCaught === 'false') {
@@ -52,6 +54,8 @@ module.exports = {
 
             return message.reply(`You stole **${random}** coins from ${targetMentions}!`);
             
+        } else {
+            this.cooldown = 0;
         }
     }
 }

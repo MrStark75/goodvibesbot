@@ -1,16 +1,21 @@
+const profileModel = require(`../../models/profileSchema`);
+
 module.exports = {
     name: 'balance',
     cooldown: 5,
     aliases: ['bal'],
     description: 'Check your balence',
-    execute(client, message, args, Discord, cmd, profileData) {
-        const wallet = profileData;
+    async execute(client, message, args, Discord, cmd, profileData) {
 
-        if (!wallet) {
+        const user = message.mentions.users.first().id || message.author.id;
+        const userTag = message.mentions.users.first() || message.author;
+        const wallet = await profileModel.findOne({ userID: user })
+
+        if (!profileData) {
             return message.reply('You have no coins yet! Do `%beg` first.');
         }
 
-        message.reply(`You have **${profileData.coins}** coins.`);
+        message.channel.send(`${userTag} has **${wallet.coins}** coins.`);
         
     }
 }
