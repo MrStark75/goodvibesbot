@@ -1,17 +1,18 @@
 require('dotenv').config();
-const { BitField } = require('discord.js');
-const { now } = require('mongoose');
 const profileModel = require(`../../models/profileSchema`);
 
+// Determines if commands are disabled
 const DisabledCommands = "false";
 
 const cooldowns = new Map();
 
 module.exports = async (client, Discord, message) => {
-    const prefix = '%';
+    const prefix = '%'; // Sets the bot's prefix
 
+    // checks for the prefix and ignores bots
     if (!message.content.startsWith(prefix) || message.author.bot) return;
-    if (!message.guild) return;
+    // Ignores direct messages
+    //if (!message.guild) return;
 
     let profileData;
     try {
@@ -36,6 +37,7 @@ module.exports = async (client, Discord, message) => {
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+    // If a command does not exist, reply with a message
     if (!command) return message.channel.send('This command does not exist, type `%help` for info on commands.');
 
     if (!cooldowns.has(command.name)) {
@@ -57,7 +59,7 @@ module.exports = async (client, Discord, message) => {
             const hours_left = Math.floor( (time/(1000*60*60)) % 24 );
             const days_left = Math.floor( time/(1000*60*60*24) );
 
-            return message.reply(`Please wait ${hours_left.toFixed(0)}h and ${minutes_left.toFixed(0)}m and ${seconds_left.toFixed(1)}s before reusing the "${command.name}" command!`);
+            return message.reply(`Please wait ${hours_left.toFixed(0)}h and ${minutes_left.toFixed(0)}m and ${seconds_left.toFixed(1)}s before reusing the "**${command.name}**" command!`);
         }
     }
 
@@ -74,8 +76,8 @@ module.exports = async (client, Discord, message) => {
         "Did you know that the snipe command has a 1-minute timer before the deleted message is unretriveable?",
         "Have you tried the economy here on Good Vibes bot? Try **%beg** to start your journey!",
         "The economy here on Good Vibes bot has a daily, try **%daily** to get your daily 1000 coins!",
-        "Did someone delete a message before you could see? Try **%snipe** to get there message!",
-        "Did you know that this bot was coded using the language JavaScript? Which is the language your browser uses to produce web pages!",
+        "Did someone delete a message before you could see? Try **%snipe** to get their message!",
+        "Did you know that this bot was coded using the language JavaScript? Which is the same language your web browser uses to produce web pages!",
         "Did you know you can steal other users coins? Try **%steal <@user>** to try and steal some coins, be careful or you may get caught!"
     ];
     const tips = tipsArray[Math.floor(Math.random() * tipsArray.length)];
@@ -85,12 +87,15 @@ module.exports = async (client, Discord, message) => {
 
     try {
 
+        // Check if commands are disabled
         if (DisabledCommands === 'true') {
-            message.channel.send('All commands are disabled at this time, until the wellbeing of the administator is healthy. Words of encouragement are welcome during this time. Thank you!');
+            message.channel.send('All commands are disabled at this time, contact the administator if you think this is a problem.');
             return;
         } else {
+            // Executes the commands with needed parameters
             command.execute(client, message, args, Discord, cmd, profileData);
 
+            // if the random picked tip is true, display the tip.
             if (showTips === 'true') {
                 message.channel.send(`**Tips:** *${tips}*`);
             } else {
@@ -101,6 +106,7 @@ module.exports = async (client, Discord, message) => {
 
     }
     catch (err) {
+        // If any errors occur, send a message to the member/user and direct message the bot creator in case of a shutdown.
         message.reply('There was an error trying to execute this command! Please notify the bot creator of this error.');
         console.error(err);
 
