@@ -12,7 +12,7 @@
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
-    "mongoose": "^5.11.18",
+    "mongoose": "^6.0.12",
     "ms": "^2.1.3"
   }
 }
