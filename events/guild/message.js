@@ -15,6 +15,7 @@ module.exports = async (client, Discord, message) => {
     //if (!message.guild) return;
 
     let profileData;
+    module.exports = { profileData }
     try {
         profileData = await profileModel.findOne({ userID: message.author.id })
         if (!profileData) {
@@ -93,7 +94,7 @@ module.exports = async (client, Discord, message) => {
             return;
         } else {
             // Executes the commands with needed parameters
-            command.execute(client, message, args, Discord, cmd, profileData);
+            command.execute(client, message, args, Discord, cmd);
 
             // if the random picked tip is true, display the tip.
             if (showTips === 'true') {

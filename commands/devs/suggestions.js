@@ -2,7 +2,7 @@ module.exports = {
     name: 'suggestions',
     aliases: ['suggest', 'suggestion'],
     description: 'Creates a suggestion in a channel',
-    execute(client, message, args, Discord, cmd, profileData) {
+    execute(client, message, args, Discord, cmd) {
         const channel = message.guild.channels.cache.find(c => c.name === 'suggestions');
         if (!channel) {
             return message.channel.send('Looks like theres no suggestions channel!');

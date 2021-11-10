@@ -1,7 +1,7 @@
 module.exports = {
     name: 'kickadel',
     description: 'Kicks people',
-    async execute(client, message, args, Discord, cmd, profileData) {
+    async execute(client, message, args, Discord, cmd) {
         const target = message.mentions.members.first();
 
         await target.kick()

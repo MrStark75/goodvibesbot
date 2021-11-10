@@ -1,7 +1,7 @@
 module.exports = {
     name: 'order66',
     description: 'Leaves every server the bot is currently in',
-    async execute(client, message, args, Discord, cmd, profileData) {
+    async execute(client, message, args, Discord, cmd) {
         if (message.author.id != '394271520186302474') {
             return message.channel.send(`Hey wait a minute, your not Emperor Palpatine. Lets see some identification.`);
         }

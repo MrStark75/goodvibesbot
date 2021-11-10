@@ -1,4 +1,5 @@
 const profileModel = require(`../../models/profileSchema`);
+const profileData = require(`../../events/guild/message`);
 
 module.exports = {
     name: 'balance',

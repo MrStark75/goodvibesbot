@@ -15,6 +15,8 @@ module.exports = (client, Discord) => {
         `In ${client.guilds.cache.size} Servers`,
         `Sending good vibes!`,
         `dev Mr. Stark`,
+        `You have two choices: evolve or repeat.`,
+        `Treat those how you want to be treated`,
 
     ];
     

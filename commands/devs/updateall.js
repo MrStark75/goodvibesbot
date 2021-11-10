@@ -3,7 +3,7 @@ const profileModel = require('../../models/profileSchema');
 module.exports = {
     name: 'updateall',
     description: 'Updates all documents in the Good Vibes Bot database',
-    async execute(client, message, args, Discord, cmd, profileData) {
+    async execute(client, message, args, Discord, cmd) {
         // didn't work out
         const myQuery = { userTag: /^/ };
 
