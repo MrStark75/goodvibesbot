@@ -12,7 +12,7 @@ module.exports = async (client, Discord, message) => {
     // checks for the prefix and ignores bots
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     // Ignores direct messages
-    //if (!message.guild) return;
+    if (!message.guild) return;
 
     let profileData;
     module.exports = { profileData }
@@ -90,7 +90,7 @@ module.exports = async (client, Discord, message) => {
 
         // Check if commands are disabled
         if (DisabledCommands === 'true') {
-            message.channel.send('All commands are disabled at this time, contact the administator if you think this is a problem.');
+            message.channel.send('All commands are disabled at this time, usually for maintenance. Check the server for more info.');
             return;
         } else {
             // Executes the commands with needed parameters
