@@ -12,7 +12,7 @@ module.exports = {
             allGuilds.forEach((guild) => {
                 /*how can 'guild' be undefined here if it's a argument coming in from forEach*/
                 const allGuildChannels = guild.channels.cache; // every guild -> every channel
-                const filteredChannels = allGuildChannels.filter(channel => channel.name.match(/goodvibes/gi));
+                const filteredChannels = allGuildChannels.filter(channel => channel.name.match(/good\Svibes\Sbot|goodvibes/gi));
 
                 filteredChannels.forEach( async (channel) => {
                     
